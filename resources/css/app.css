@@ -1,46 +1,139 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
 
-/* Custom CSS Variables */
+/* ============================================
+   EMERALD/TEAL GREEN THEME VARIABLES
+   ============================================ */
 :root {
-    --color-primary-50: #f0f9ff;
-    --color-primary-100: #e0f2fe;
-    --color-primary-200: #bae6fd;
-    --color-primary-300: #7dd3fc;
-    --color-primary-400: #38bdf8;
-    --color-primary-500: #0ea5e9;
-    --color-primary-600: #0284c7;
-    --color-primary-700: #0369a1;
-    --color-primary-800: #075985;
-    --color-primary-900: #0c4a6e;
+    /* Primary - Emerald Green */
+    --color-primary-50: #ecfdf5;
+    --color-primary-100: #d1fae5;
+    --color-primary-200: #a7f3d0;
+    --color-primary-300: #6ee7b7;
+    --color-primary-400: #34d399;
+    --color-primary-500: #10b981;
+    --color-primary-600: #059669;
+    --color-primary-700: #047857;
+    --color-primary-800: #065f46;
+    --color-primary-900: #064e3b;
     
-    --color-accent-50: #fff7ed;
-    --color-accent-100: #ffedd5;
-    --color-accent-200: #fed7aa;
-    --color-accent-300: #fdba74;
-    --color-accent-400: #fb923c;
-    --color-accent-500: #f97316;
-    --color-accent-600: #ea580c;
-    --color-accent-700: #c2410c;
-    --color-accent-800: #9a3412;
-    --color-accent-900: #7c2d12;
+    /* Secondary - Teal/Cyan */
+    --color-secondary-50: #ecfeff;
+    --color-secondary-100: #cffafe;
+    --color-secondary-200: #a5f3fc;
+    --color-secondary-300: #67e8f9;
+    --color-secondary-400: #22d3ee;
+    --color-secondary-500: #06b6d4;
+    --color-secondary-600: #0891b2;
+    --color-secondary-700: #0e7490;
+    --color-secondary-800: #155e75;
+    --color-secondary-900: #164e63;
+    
+    /* Accent - Warm Gold/Amber for CTAs */
+    --color-accent-50: #fffbeb;
+    --color-accent-100: #fef3c7;
+    --color-accent-200: #fde68a;
+    --color-accent-300: #fcd34d;
+    --color-accent-400: #fbbf24;
+    --color-accent-500: #f59e0b;
+    --color-accent-600: #d97706;
+    --color-accent-700: #b45309;
+    --color-accent-800: #92400e;
+    --color-accent-900: #78350f;
+    
+    /* Slate for dark backgrounds */
+    --color-slate-800: #1e293b;
+    --color-slate-900: #0f172a;
+    --color-slate-950: #020617;
 }
 
-/* Base Styles */
+/* ============================================
+   BASE STYLES
+   ============================================ */
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Source Sans Pro', system-ui, sans-serif;
+    font-family: 'DM Sans', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    background-color: #fafafa;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+}
+
+/* ============================================
+   THEME COLOR UTILITIES
+   ============================================ */
+
+/* Primary Emerald Colors */
+.bg-primary-50 { background-color: var(--color-primary-50); }
+.bg-primary-100 { background-color: var(--color-primary-100); }
+.bg-primary-200 { background-color: var(--color-primary-200); }
+.bg-primary-300 { background-color: var(--color-primary-300); }
+.bg-primary-400 { background-color: var(--color-primary-400); }
+.bg-primary-500 { background-color: var(--color-primary-500); }
+.bg-primary-600 { background-color: var(--color-primary-600); }
+.bg-primary-700 { background-color: var(--color-primary-700); }
+.bg-primary-800 { background-color: var(--color-primary-800); }
+.bg-primary-900 { background-color: var(--color-primary-900); }
+
+.text-primary-50 { color: var(--color-primary-50); }
+.text-primary-100 { color: var(--color-primary-100); }
+.text-primary-200 { color: var(--color-primary-200); }
+.text-primary-300 { color: var(--color-primary-300); }
+.text-primary-400 { color: var(--color-primary-400); }
+.text-primary-500 { color: var(--color-primary-500); }
+.text-primary-600 { color: var(--color-primary-600); }
+.text-primary-700 { color: var(--color-primary-700); }
+.text-primary-800 { color: var(--color-primary-800); }
+.text-primary-900 { color: var(--color-primary-900); }
+
+.border-primary-500 { border-color: var(--color-primary-500); }
+.border-primary-600 { border-color: var(--color-primary-600); }
+
+/* Secondary Teal Colors */
+.bg-secondary-500 { background-color: var(--color-secondary-500); }
+.bg-secondary-600 { background-color: var(--color-secondary-600); }
+.text-secondary-400 { color: var(--color-secondary-400); }
+.text-secondary-500 { color: var(--color-secondary-500); }
+
+/* Accent Colors */
+.bg-accent-100 { background-color: var(--color-accent-100); }
+.bg-accent-500 { background-color: var(--color-accent-500); }
+.bg-accent-600 { background-color: var(--color-accent-600); }
+.bg-accent-900 { background-color: var(--color-accent-900); }
+
+.text-accent-300 { color: var(--color-accent-300); }
+.text-accent-400 { color: var(--color-accent-400); }
+.text-accent-500 { color: var(--color-accent-500); }
+.text-accent-600 { color: var(--color-accent-600); }
+.text-accent-800 { color: var(--color-accent-800); }
+
+/* Gradient backgrounds */
+.from-primary-500 { --tw-gradient-from: var(--color-primary-500); }
+.from-primary-600 { --tw-gradient-from: var(--color-primary-600); }
+.from-primary-700 { --tw-gradient-from: var(--color-primary-700); }
+.from-primary-800 { --tw-gradient-from: var(--color-primary-800); }
+.from-primary-900 { --tw-gradient-from: var(--color-primary-900); }
+
+.to-primary-600 { --tw-gradient-to: var(--color-primary-600); }
+.to-secondary-500 { --tw-gradient-to: var(--color-secondary-500); }
+.to-secondary-600 { --tw-gradient-to: var(--color-secondary-600); }
+.to-accent-500 { --tw-gradient-to: var(--color-accent-500); }
+.to-accent-600 { --tw-gradient-to: var(--color-accent-600); }
+.to-accent-900 { --tw-gradient-to: var(--color-accent-900); }
+
+.via-primary-800 { --tw-gradient-via: var(--color-primary-800); }
+
+/* Focus ring colors */
+.focus\:ring-primary-500:focus {
+    --tw-ring-color: var(--color-primary-500);
 }
 
 /* ============================================
@@ -237,17 +330,17 @@ h1, h2, h3, h4, h5, h6 {
     to { opacity: 1; }
 }
 
-/* Pulse Glow */
+/* Pulse Glow - Updated with emerald */
 .animate-pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite;
 }
 
 @keyframes pulseGlow {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
     }
     50% {
-        box-shadow: 0 0 40px rgba(14, 165, 233, 0.6);
+        box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
     }
 }
 
@@ -328,14 +421,14 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-8px) scale(1.02);
 }
 
-/* Glow Hover */
+/* Glow Hover - Updated with emerald */
 .glow-hover {
     transition: all 0.3s ease;
 }
 
 .glow-hover:hover {
-    box-shadow: 0 0 30px rgba(14, 165, 233, 0.4),
-                0 0 60px rgba(14, 165, 233, 0.2);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.4),
+                0 0 60px rgba(16, 185, 129, 0.2);
 }
 
 /* Lift Hover */
@@ -362,21 +455,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
-   BUTTONS
+   BUTTONS - EMERALD THEME
    ============================================ */
 
 .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700));
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
     color: white;
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 9999px;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
 
 .btn-primary::before {
@@ -392,7 +486,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, var(--color-primary-400), var(--color-primary-500));
 }
 
 .btn-primary:hover::before {
@@ -403,14 +498,15 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 2rem;
     background: linear-gradient(135deg, var(--color-accent-500), var(--color-accent-600));
     color: white;
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 9999px;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
 }
 
 .btn-secondary::before {
@@ -426,7 +522,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-secondary:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
 }
 
 .btn-secondary:hover::before {
@@ -437,11 +533,11 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid var(--color-primary-600);
+    padding: 0.875rem 2rem;
+    border: 2px solid var(--color-primary-500);
     color: var(--color-primary-600);
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 9999px;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     background: transparent;
     position: relative;
@@ -455,7 +551,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 0;
     height: 100%;
-    background: var(--color-primary-600);
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
     transition: width 0.3s ease;
     z-index: -1;
 }
@@ -463,6 +559,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline:hover {
     color: white;
     transform: translateY(-3px);
+    border-color: var(--color-primary-500);
 }
 
 .btn-outline:hover::before {
@@ -473,12 +570,13 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 2rem;
     background: linear-gradient(135deg, #22c55e, #16a34a);
     color: white;
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 9999px;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
 }
 
 .btn-whatsapp:hover {
@@ -487,21 +585,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
-   CARDS
+   CARDS - UPDATED THEME
    ============================================ */
 
 .card {
     background-color: white;
     border-radius: 1.5rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     transform-style: preserve-3d;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
     transform: translateY(-10px) rotateX(2deg);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.2);
 }
 
 /* Glass Card */
@@ -541,7 +641,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(16, 185, 129, 0.4);
     border-radius: 50%;
     animation: particleFloat 15s infinite ease-in-out;
 }
@@ -589,9 +689,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: auto;
 }
 
-/* Gradient Text */
+/* Gradient Text - Updated with emerald to teal */
 .gradient-text {
-    background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500));
+    background: linear-gradient(135deg, var(--color-primary-400), var(--color-secondary-400));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -603,17 +703,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .input-field {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.875rem 1.25rem;
     border: 2px solid #e5e7eb;
-    border-radius: 0.75rem;
+    border-radius: 9999px;
     outline: none;
     transition: all 0.3s ease;
     background: white;
+    font-size: 1rem;
 }
 
 .input-field:focus {
     border-color: var(--color-primary-500);
-    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
     transform: translateY(-2px);
 }
 
@@ -664,58 +765,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
-   CUSTOM COLORS FOR TAILWIND v4
-   ============================================ */
-
-.bg-primary-50 { background-color: var(--color-primary-50); }
-.bg-primary-100 { background-color: var(--color-primary-100); }
-.bg-primary-500 { background-color: var(--color-primary-500); }
-.bg-primary-600 { background-color: var(--color-primary-600); }
-.bg-primary-700 { background-color: var(--color-primary-700); }
-.bg-primary-800 { background-color: var(--color-primary-800); }
-.bg-primary-900 { background-color: var(--color-primary-900); }
-
-.text-primary-100 { color: var(--color-primary-100); }
-.text-primary-200 { color: var(--color-primary-200); }
-.text-primary-300 { color: var(--color-primary-300); }
-.text-primary-400 { color: var(--color-primary-400); }
-.text-primary-500 { color: var(--color-primary-500); }
-.text-primary-600 { color: var(--color-primary-600); }
-.text-primary-700 { color: var(--color-primary-700); }
-
-.bg-accent-100 { background-color: var(--color-accent-100); }
-.bg-accent-500 { background-color: var(--color-accent-500); }
-.bg-accent-600 { background-color: var(--color-accent-600); }
-.bg-accent-900 { background-color: var(--color-accent-900); }
-
-.text-accent-300 { color: var(--color-accent-300); }
-.text-accent-400 { color: var(--color-accent-400); }
-.text-accent-500 { color: var(--color-accent-500); }
-.text-accent-600 { color: var(--color-accent-600); }
-.text-accent-800 { color: var(--color-accent-800); }
-
-.border-primary-500 { border-color: var(--color-primary-500); }
-.border-primary-600 { border-color: var(--color-primary-600); }
-
-/* Gradient backgrounds */
-.from-primary-500 { --tw-gradient-from: var(--color-primary-500); }
-.from-primary-600 { --tw-gradient-from: var(--color-primary-600); }
-.from-primary-800 { --tw-gradient-from: var(--color-primary-800); }
-.from-primary-900 { --tw-gradient-from: var(--color-primary-900); }
-
-.to-primary-600 { --tw-gradient-to: var(--color-primary-600); }
-.to-accent-500 { --tw-gradient-to: var(--color-accent-500); }
-.to-accent-600 { --tw-gradient-to: var(--color-accent-600); }
-.to-accent-900 { --tw-gradient-to: var(--color-accent-900); }
-
-.via-primary-800 { --tw-gradient-via: var(--color-primary-800); }
-
-/* Focus ring colors */
-.focus\:ring-primary-500:focus {
-    --tw-ring-color: var(--color-primary-500);
-}
-
-/* ============================================
    SCROLL ANIMATIONS (Intersection Observer)
    ============================================ */
 
@@ -731,13 +780,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
-   LOADING SPINNER
+   LOADING SPINNER - Emerald
    ============================================ */
 
 .spinner {
     width: 40px;
     height: 40px;
-    border: 4px solid rgba(14, 165, 233, 0.2);
+    border: 4px solid rgba(16, 185, 129, 0.2);
     border-top-color: var(--color-primary-500);
     border-radius: 50%;
     animation: spin 1s linear infinite;
@@ -745,4 +794,110 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   BADGE STYLES
+   ============================================ */
+
+.badge-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 9999px;
+}
+
+.badge-accent {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--color-accent-400), var(--color-accent-500));
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 9999px;
+}
+
+/* ============================================
+   SECTION BACKGROUNDS
+   ============================================ */
+
+.section-dark {
+    background: linear-gradient(135deg, var(--color-slate-900), var(--color-slate-800));
+}
+
+.section-gradient {
+    background: linear-gradient(135deg, var(--color-primary-900), var(--color-slate-900));
+}
+
+/* ============================================
+   ICON CONTAINERS
+   ============================================ */
+
+.icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500));
+    border-radius: 1rem;
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.icon-box-lg {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1.25rem;
+}
+
+/* ============================================
+   DECORATIVE ELEMENTS
+   ============================================ */
+
+.decorative-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.decorative-blob-primary {
+    background: var(--color-primary-500);
+}
+
+.decorative-blob-secondary {
+    background: var(--color-secondary-500);
+}
+
+.decorative-blob-accent {
+    background: var(--color-accent-500);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline,
+    .btn-whatsapp {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .section-title {
+        font-size: 1.875rem;
+    }
 }

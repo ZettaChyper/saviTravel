@@ -5,26 +5,29 @@
 <section class="relative min-h-[50vh] flex items-center overflow-hidden">
     <div class="absolute inset-0">
         <img src="{{ asset('images/packages-banner.jpg') }}" alt="Sri Lanka Travel Packages" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary-900/90 via-primary-800/80 to-primary-900/70"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-emerald-900/80 to-slate-900/70"></div>
     </div>
     <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
         <div class="max-w-3xl animate-fade-in-left">
-            <span class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-primary-200 text-sm font-medium mb-6 animate-bounce-in">
-                🌴 Explore Sri Lanka's Best Packages
+            <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-500/90 to-teal-500/90 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6 animate-bounce-in">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+                Explore Sri Lanka's Best Packages
             </span>
             <h1 class="text-4xl md:text-6xl font-display font-bold text-white mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">
                 Travel Packages
             </h1>
-            <p class="text-xl text-primary-100 max-w-2xl animate-fade-in-up" style="animation-delay: 0.4s;">
+            <p class="text-xl text-gray-200 max-w-2xl animate-fade-in-up" style="animation-delay: 0.4s;">
                 Discover our collection of carefully curated Sri Lankan travel experiences - from ancient ruins to pristine beaches
             </p>
             <nav class="mt-6 animate-fade-in-up" style="animation-delay: 0.6s;" aria-label="Breadcrumb">
-                <ol class="flex items-center space-x-2 text-primary-200">
-                    <li><a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a></li>
-                    <li><span class="mx-2">/</span></li>
-                    <li class="text-white font-semibold">Travel Packages</li>
+                <ol class="flex items-center space-x-2 text-gray-300">
+                    <li><a href="{{ route('home') }}" class="hover:text-emerald-400 transition-colors">Home</a></li>
+                    <li><span class="mx-2 text-emerald-500">/</span></li>
+                    <li class="text-emerald-400 font-semibold">Travel Packages</li>
                 </ol>
             </nav>
         </div>
@@ -32,10 +35,10 @@
 </section>
 
 {{-- Filters & Packages --}}
-<section class="py-16 bg-gray-50">
+<section class="py-16 bg-gradient-to-b from-gray-50 to-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Filters --}}
-        <div class="bg-white rounded-2xl shadow-lg p-6 mb-10 animate-fade-in-up">
+        <div class="bg-white rounded-2xl shadow-lg shadow-emerald-500/5 p-6 mb-10 animate-fade-in-up border border-emerald-100/50">
             <form action="{{ route('packages.index') }}" method="GET" class="flex flex-wrap gap-4 items-end">
                 <div class="flex-1 min-w-[200px]">
                     <label for="destination" class="form-label">Destination</label>
@@ -80,9 +83,9 @@
         {{-- Results Count --}}
         <div class="flex items-center justify-between mb-8 animate-fade-in-up" style="animation-delay: 0.2s;">
             <p class="text-gray-600">
-                Showing <span class="font-semibold">{{ $packages->firstItem() ?? 0 }}</span> -
-                <span class="font-semibold">{{ $packages->lastItem() ?? 0 }}</span> of
-                <span class="font-semibold">{{ $packages->total() }}</span> packages
+                Showing <span class="font-semibold text-emerald-600">{{ $packages->firstItem() ?? 0 }}</span> -
+                <span class="font-semibold text-emerald-600">{{ $packages->lastItem() ?? 0 }}</span> of
+                <span class="font-semibold text-emerald-600">{{ $packages->total() }}</span> packages
             </p>
         </div>
 
@@ -97,34 +100,34 @@
                              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                              loading="lazy">
                         @if($package->is_featured)
-                        <span class="absolute top-4 left-4 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse-glow">
-                            Featured
+                        <span class="absolute top-4 left-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-emerald-500/30">
+                            ⭐ Featured
                         </span>
                         @endif
-                        <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 tilt-effect">
-                            <span class="text-primary-600 font-bold">{{ $package->formatted_price }}</span>
+                        <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg">
+                            <span class="text-emerald-600 font-bold">{{ $package->formatted_price }}</span>
                         </div>
                     </div>
                     <div class="p-5">
                         <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 mr-1 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             </svg>
                             {{ $package->location }}
                         </div>
-                        <h2 class="text-lg font-display font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors line-clamp-2">
+                        <h2 class="text-lg font-display font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2">
                             <a href="{{ route('packages.show', $package) }}">{{ $package->title }}</a>
                         </h2>
                         <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 mr-1 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                             {{ $package->duration }}
                         </div>
                         <a href="{{ route('packages.show', $package) }}"
-                           class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors lift-hover">
+                           class="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors group/link">
                             View Details
-                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                             </svg>
                         </a>
@@ -133,9 +136,11 @@
             </article>
             @empty
             <div class="col-span-full text-center py-16 animate-fade-in-up">
-                <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                </svg>
+                <div class="w-20 h-20 mx-auto mb-6 bg-emerald-100 rounded-full flex items-center justify-center">
+                    <svg class="w-10 h-10 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                </div>
                 <h3 class="text-xl font-semibold text-gray-700 mb-2">No packages found</h3>
                 <p class="text-gray-500">Try adjusting your filters or check back later.</p>
             </div>
@@ -152,13 +157,17 @@
 </section>
 
 {{-- CTA Section --}}
-<section class="py-16 bg-gradient-to-r from-primary-600 to-accent-600">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
+<section class="py-16 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 relative overflow-hidden">
+    {{-- Decorative elements --}}
+    <div class="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up relative z-10">
         <h2 class="text-3xl font-display font-bold text-white mb-4">Can't Find What You're Looking For?</h2>
         <p class="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
             Let us customize a perfect Sri Lankan adventure just for you!
         </p>
-        <a href="{{ route('contact') }}" class="bg-white text-primary-600 hover:bg-gray-100 font-semibold text-lg px-8 py-3 rounded-lg transition-all duration-300 lift-hover inline-flex items-center">
+        <a href="{{ route('contact') }}" class="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold text-lg px-8 py-4 rounded-full transition-all duration-300 lift-hover inline-flex items-center shadow-lg shadow-emerald-900/20">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
             </svg>
