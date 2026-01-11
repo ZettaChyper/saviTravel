@@ -37,7 +37,6 @@ A complete, production-ready travel agency website built with Laravel 12, featur
 - Lazy loading images
 - Gzip compression ready
 - CDN-ready static assets
-
 ## Tech Stack
 
 - **Framework**: Laravel 12 (PHP 8.2+)

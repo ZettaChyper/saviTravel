@@ -2,29 +2,44 @@
     {{-- Glass morphism background layer --}}
     <div class="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-xl border-b border-white/10"></div>
     
+    {{-- Ensure header is always visible on mobile --}}
+    <style>
+        @media (max-width: 1023px) {
+            #main-header {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 50 !important;
+                display: block !important;
+                visibility: visible !important;
+            }
+        }
+    </style>
+    
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <nav class="flex items-center justify-between h-20">
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center space-x-3 group relative z-10">
+            <a href="{{ route('home') }}" class="flex items-center space-x-2 sm:space-x-3 group relative z-[100] flex-shrink-0">
                 {{-- Logo Icon with animated gradient --}}
-                <div class="relative">
-                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all duration-300 group-hover:scale-105">
+                <div class="relative flex-shrink-0">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all duration-300 group-hover:scale-105">
                         {{-- Airplane icon --}}
-                        <svg class="w-7 h-7 text-white transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" fill="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                         </svg>
                     </div>
                     {{-- Pulse ring effect --}}
-                    <div class="absolute inset-0 rounded-2xl bg-emerald-400/20 animate-ping opacity-75" style="animation-duration: 3s;"></div>
+                    <div class="absolute inset-0 rounded-xl sm:rounded-2xl bg-emerald-400/20 animate-ping opacity-75" style="animation-duration: 3s;"></div>
                 </div>
                 
-                {{-- Logo Text - Always visible --}}
-                <div class="flex flex-col">
+                {{-- Logo Text - Always visible on mobile --}}
+                <div class="flex flex-col min-w-0">
                     <div class="flex items-baseline">
-                        <span class="text-2xl font-bold text-white tracking-tight group-hover:text-emerald-300 transition-colors duration-300" style="font-family: 'Playfair Display', serif;">Savi</span>
-                        <span class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent" style="font-family: 'Playfair Display', serif;">Travel</span>
+                        <span class="text-lg sm:text-2xl font-bold text-white tracking-tight group-hover:text-emerald-300 transition-colors duration-300 whitespace-nowrap" style="font-family: 'Playfair Display', serif;">Savi</span>
+                        <span class="text-lg sm:text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent whitespace-nowrap" style="font-family: 'Playfair Display', serif;">Travel</span>
                     </div>
-                    <span class="text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium hidden sm:block">Explore • Dream • Discover</span>
+                    <span class="text-[9px] sm:text-[10px] text-white/50 uppercase tracking-[0.2em] font-medium hidden sm:block">Explore • Dream • Discover</span>
                 </div>
             </a>
 
@@ -87,19 +102,22 @@
             </div>
 
             {{-- Mobile Menu Button --}}
-            <button type="button" class="lg:hidden relative z-10 w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition-all duration-300" id="mobile-menu-btn" aria-label="Toggle menu">
-                <div class="relative w-6 h-6">
-                    <span class="hamburger-line top-1" id="line-1"></span>
-                    <span class="hamburger-line top-[11px]" id="line-2"></span>
-                    <span class="hamburger-line top-[19px]" id="line-3"></span>
+            <button type="button" onclick="toggleMobileMenu()" class="lg:hidden relative z-[100] w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl bg-white/15 hover:bg-white/25 active:bg-white/30 border border-white/30 transition-all duration-300 shadow-lg backdrop-blur-sm cursor-pointer touch-manipulation" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" style="pointer-events: auto; -webkit-tap-highlight-color: transparent;">
+                <div class="relative w-5 h-5 sm:w-6 sm:h-6 pointer-events-none">
+                    <span class="hamburger-line top-0.5 sm:top-1" id="line-1"></span>
+                    <span class="hamburger-line top-[10px] sm:top-[11px]" id="line-2"></span>
+                    <span class="hamburger-line top-[18px] sm:top-[19px]" id="line-3"></span>
                 </div>
             </button>
         </nav>
     </div>
 
+    {{-- Mobile Menu Overlay --}}
+    <div class="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] transition-opacity duration-300" id="mobile-menu-overlay" style="opacity: 0; pointer-events: none; visibility: hidden;"></div>
+    
     {{-- Mobile Menu --}}
-    <div class="lg:hidden fixed inset-0 bg-slate-900/98 backdrop-blur-xl transform translate-x-full transition-transform duration-500 ease-out z-40" id="mobile-menu">
-        <div class="flex flex-col h-full pt-24 pb-8 px-6">
+    <div class="lg:hidden fixed top-0 right-0 bottom-0 w-full max-w-sm bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-xl z-[70] shadow-2xl transition-transform duration-500 ease-out overflow-hidden" id="mobile-menu" style="transform: translateX(100%); visibility: hidden;">
+        <div class="flex flex-col h-full pt-20 pb-8 px-6 overflow-y-auto">
             {{-- Mobile Nav Links --}}
             <div class="flex-1 space-y-2">
                 <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'mobile-nav-active' : '' }}">
@@ -254,26 +272,87 @@
         background: white;
         border-radius: 2px;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
     }
     
-    .menu-open #line-1 {
-        top: 11px;
+    #mobile-menu-btn.menu-open #line-1 {
+        top: 10px !important;
         transform: rotate(45deg);
     }
     
-    .menu-open #line-2 {
+    #mobile-menu-btn.menu-open #line-2 {
         opacity: 0;
         transform: translateX(10px);
     }
     
-    .menu-open #line-3 {
-        top: 11px;
+    #mobile-menu-btn.menu-open #line-3 {
+        top: 10px !important;
         transform: rotate(-45deg);
+    }
+    
+    @media (min-width: 640px) {
+        #mobile-menu-btn.menu-open #line-1,
+        #mobile-menu-btn.menu-open #line-3 {
+            top: 11px !important;
+        }
+    }
+    
+    /* Mobile Menu Overlay */
+    #mobile-menu-overlay {
+        transition: opacity 0.3s ease-out;
+    }
+    
+    #mobile-menu-overlay.menu-visible {
+        opacity: 1 !important;
+        pointer-events: auto !important;
     }
     
     /* Mobile Menu Open State */
     #mobile-menu.menu-visible {
-        transform: translateX(0);
+        transform: translateX(0) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Ensure smooth transitions */
+    #mobile-menu {
+        will-change: transform;
+    }
+    
+    #mobile-menu-overlay {
+        will-change: opacity;
+    }
+    
+    /* Ensure mobile menu is visible on mobile devices */
+    @media (max-width: 1023px) {
+        #mobile-menu {
+            display: block !important;
+        }
+        
+        #mobile-menu-overlay {
+            display: block !important;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        #mobile-menu,
+        #mobile-menu-overlay {
+            display: none !important;
+        }
+    }
+    
+    /* Force mobile menu to be visible when opened */
+    #mobile-menu.menu-visible {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    #mobile-menu-overlay.menu-visible {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
     }
     
     /* Mobile Nav Links */
@@ -325,33 +404,142 @@
 </style>
 
 <script>
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mainHeader = document.getElementById('main-header');
-    
-    mobileMenuBtn?.addEventListener('click', function() {
-        this.classList.toggle('menu-open');
-        mobileMenu.classList.toggle('menu-visible');
-        document.body.classList.toggle('overflow-hidden');
-    });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('menu-open');
+// Global function for onclick handler - always available
+window.toggleMobileMenu = function() {
+    try {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        
+        if (!mobileMenu || !mobileMenuOverlay) {
+            console.error('Mobile menu elements not found');
+            return false;
+        }
+        
+        const isOpen = mobileMenu.classList.contains('menu-visible');
+        
+        if (isOpen) {
+            // Close menu
+            if (mobileMenuBtn) {
+                mobileMenuBtn.classList.remove('menu-open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
             mobileMenu.classList.remove('menu-visible');
-            document.body.classList.remove('overflow-hidden');
-        });
-    });
+            mobileMenuOverlay.classList.remove('menu-visible');
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        } else {
+            // Open menu
+            if (mobileMenuBtn) {
+                mobileMenuBtn.classList.add('menu-open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            }
+            mobileMenu.classList.add('menu-visible');
+            mobileMenuOverlay.classList.add('menu-visible');
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+        }
+        
+        return true;
+    } catch (error) {
+        console.error('Error toggling mobile menu:', error);
+        return false;
+    }
+};
 
+// Initialize immediately and on DOM ready
+(function() {
+    'use strict';
+    
+    let initialized = false;
+    
+    function initMobileMenu() {
+        if (initialized) return;
+        
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        
+        if (!mobileMenuBtn || !mobileMenu || !mobileMenuOverlay) {
+            // Retry if elements not found
+            if (document.readyState === 'loading') {
+                return; // Will retry on DOMContentLoaded
+            }
+            setTimeout(initMobileMenu, 50);
+            return;
+        }
+        
+        initialized = true;
+        
+        // Add event listener (in addition to onclick)
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.toggleMobileMenu();
+        }, { passive: false });
+        
+        // Close mobile menu when clicking overlay
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.toggleMobileMenu();
+        }, { passive: false });
+        
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                setTimeout(function() {
+                    const menu = document.getElementById('mobile-menu');
+                    if (menu && menu.classList.contains('menu-visible')) {
+                        window.toggleMobileMenu();
+                    }
+                }, 150);
+            });
+        });
+        
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('menu-visible')) {
+                window.toggleMobileMenu();
+            }
+        });
+        
+        // Prevent menu from closing when clicking inside it
+        mobileMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // Ensure menu starts closed
+        mobileMenu.classList.remove('menu-visible');
+        mobileMenuOverlay.classList.remove('menu-visible');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.classList.remove('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+    }
+    
+    // Try to initialize immediately
+    initMobileMenu();
+    
+    // Also initialize on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+        // DOM already loaded, try again
+        setTimeout(initMobileMenu, 10);
+    }
+    
     // Header scroll effect
     window.addEventListener('scroll', function() {
         const header = document.getElementById('main-header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        if (header) {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
-    });
+    }, { passive: true });
+})();
 </script>

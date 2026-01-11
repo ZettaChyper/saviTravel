@@ -174,7 +174,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                 <p class="text-gray-500 text-sm">
-                    © {{ date('Y') }} <span class="text-emerald-400">{{ config('app.name') }}</span>. All rights reserved.
+                    © {{ date('Y') }} <span class="text-emerald-400">zettachyper</span>. All rights reserved.
                 </p>
                 <div class="flex items-center space-x-6">
                     <a href="#" class="text-gray-500 hover:text-emerald-400 text-sm transition-colors duration-300">Privacy Policy</a>
