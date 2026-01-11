@@ -113,10 +113,10 @@
     </div>
 
     {{-- Mobile Menu Overlay --}}
-    <div class="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] transition-opacity duration-300" id="mobile-menu-overlay" style="opacity: 0; pointer-events: none; visibility: hidden;"></div>
+    <div class="mobile-menu-overlay lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]" id="mobile-menu-overlay"></div>
     
     {{-- Mobile Menu --}}
-    <div class="lg:hidden fixed top-0 right-0 bottom-0 w-full max-w-sm bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-xl z-[70] shadow-2xl transition-transform duration-500 ease-out overflow-hidden" id="mobile-menu" style="transform: translateX(100%); visibility: hidden;">
+    <div class="mobile-menu-drawer lg:hidden fixed top-0 right-0 bottom-0 w-full max-w-sm bg-gradient-to-b from-slate-900 to-slate-950 backdrop-blur-xl z-[70] shadow-2xl overflow-hidden" id="mobile-menu">
         <div class="flex flex-col h-full pt-20 pb-8 px-6 overflow-y-auto">
             {{-- Mobile Nav Links --}}
             <div class="flex-1 space-y-2">
@@ -297,30 +297,44 @@
         }
     }
     
-    /* Mobile Menu Overlay */
-    #mobile-menu-overlay {
-        transition: opacity 0.3s ease-out;
+    /* Mobile Menu Overlay - Hidden by default */
+    .mobile-menu-overlay {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
     }
     
-    #mobile-menu-overlay.menu-visible {
+    .mobile-menu-overlay.menu-visible {
         opacity: 1 !important;
         pointer-events: auto !important;
-    }
-    
-    /* Mobile Menu Open State */
-    #mobile-menu.menu-visible {
-        transform: translateX(0) !important;
         visibility: visible !important;
-        opacity: 1 !important;
     }
     
-    /* Ensure smooth transitions */
-    #mobile-menu {
-        will-change: transform;
+    /* Mobile Menu Drawer - Hidden by default */
+    .mobile-menu-drawer {
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        visibility: visible;
     }
     
-    #mobile-menu-overlay {
-        will-change: opacity;
+    .mobile-menu-drawer.menu-visible {
+        transform: translateX(0) !important;
+    }
+    
+    /* Ensure mobile menu is visible on mobile devices */
+    @media (max-width: 1023px) {
+        .mobile-menu-drawer,
+        .mobile-menu-overlay {
+            display: block !important;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .mobile-menu-drawer,
+        .mobile-menu-overlay {
+            display: none !important;
+        }
     }
     
     /* Ensure mobile menu is visible on mobile devices */
@@ -341,19 +355,6 @@
         }
     }
     
-    /* Force mobile menu to be visible when opened */
-    #mobile-menu.menu-visible {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-    
-    #mobile-menu-overlay.menu-visible {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-    }
     
     /* Mobile Nav Links */
     .mobile-nav-link {
@@ -406,45 +407,60 @@
 <script>
 // Global function for onclick handler - always available
 window.toggleMobileMenu = function() {
-    try {
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        
-        if (!mobileMenu || !mobileMenuOverlay) {
-            console.error('Mobile menu elements not found');
-            return false;
-        }
-        
-        const isOpen = mobileMenu.classList.contains('menu-visible');
-        
-        if (isOpen) {
-            // Close menu
-            if (mobileMenuBtn) {
-                mobileMenuBtn.classList.remove('menu-open');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-            mobileMenu.classList.remove('menu-visible');
-            mobileMenuOverlay.classList.remove('menu-visible');
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
-        } else {
-            // Open menu
-            if (mobileMenuBtn) {
-                mobileMenuBtn.classList.add('menu-open');
-                mobileMenuBtn.setAttribute('aria-expanded', 'true');
-            }
-            mobileMenu.classList.add('menu-visible');
-            mobileMenuOverlay.classList.add('menu-visible');
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-        }
-        
-        return true;
-    } catch (error) {
-        console.error('Error toggling mobile menu:', error);
+    console.log('toggleMobileMenu called');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    
+    console.log('Elements found:', {
+        btn: !!mobileMenuBtn,
+        menu: !!mobileMenu,
+        overlay: !!mobileMenuOverlay
+    });
+    
+    if (!mobileMenu || !mobileMenuOverlay) {
+        console.error('Mobile menu elements not found');
         return false;
     }
+    
+    const isOpen = mobileMenu.classList.contains('menu-visible');
+    console.log('Menu is currently:', isOpen ? 'OPEN' : 'CLOSED');
+    
+    if (isOpen) {
+        // Close menu
+        console.log('Closing menu...');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.classList.remove('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+        mobileMenu.classList.remove('menu-visible');
+        mobileMenuOverlay.classList.remove('menu-visible');
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+    } else {
+        // Open menu - force display
+        console.log('Opening menu...');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.classList.add('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        }
+        // Force visibility with inline styles
+        mobileMenu.style.display = 'block';
+        mobileMenu.style.visibility = 'visible';
+        mobileMenu.style.transform = 'translateX(0)';
+        mobileMenuOverlay.style.display = 'block';
+        mobileMenuOverlay.style.visibility = 'visible';
+        mobileMenuOverlay.style.opacity = '1';
+        mobileMenuOverlay.style.pointerEvents = 'auto';
+        // Add visible class
+        mobileMenu.classList.add('menu-visible');
+        mobileMenuOverlay.classList.add('menu-visible');
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        console.log('Menu should now be visible');
+    }
+    
+    return true;
 };
 
 // Initialize immediately and on DOM ready
